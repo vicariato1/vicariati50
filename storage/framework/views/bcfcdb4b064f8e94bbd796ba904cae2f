@@ -1,0 +1,10 @@
+<div class="col-md-12" id="divAmbiti">
+    <table id="tabAmbiti">
+        <?php foreach($ambiti as $ambito): ?>
+        <tr>
+            <td><a href="<?php echo action('AmbitiController@mostraAmbito', $ambito->id); ?>"><?php echo $ambito->nome; ?></a></td>
+        </tr>        
+        <?php endforeach; ?>
+    </table>
+</div>
+

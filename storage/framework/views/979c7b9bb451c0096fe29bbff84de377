@@ -1,0 +1,33 @@
+<div class="col-md-12" style="margin-top: 10px;">
+
+    <?php if($utenteAutorizzatoPubblicazioneBollettini): ?>
+    <a href="<?php echo URL::to('insertBollettino'); ?>">Inserisci Bollettino</a>
+    <?php endif; ?>
+
+    <?php if($bollettini->isEmpty()): ?>
+    <p> Nessun Bollettino presente!</p>
+    <?php else: ?>
+    <table class="table table-striped table-condensed">
+        <tbody>
+            <?php foreach($bollettini as $bollettino): ?>
+            <tr>
+                <td id="tdBollettini" >
+                    <a href="<?php echo URL::to('downloadBol', $bollettino->id  ); ?>"><?php echo $bollettino->nome_parrocchia; ?> </a>
+                </td>
+                <?php if($bollettino->created_at !== '--' and date("d/m/Y",strtotime($bollettino->created_at)) !== '01/01/1970'): ?>
+                <td id="tdBollettini" class="text-center" title="<?php echo $bollettino->count; ?> download"><small><?php echo date("d/m/y",strtotime($bollettino->created_at)); ?></small></td>
+                <?php else: ?>
+                <td id="tdBollettini" class="text-center"></td>
+                <?php endif; ?>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div id="divPaginazione" class="text-center" >
+        <?php echo str_replace('/?', '?', $bollettini->render()); ?>
+
+    </div>
+    <?php endif; ?>
+
+</div>
+

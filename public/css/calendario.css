@@ -1,0 +1,50 @@
+td.coloreGiorno1 {
+    background-color: LightCyan;
+}
+td.coloreGiorno2 {
+    background-color: LightCyan;
+}
+td.coloreGiorno3 {
+    background-color: LightCyan;
+}
+td.coloreGiorno4 {
+    background-color: LightCyan;
+}
+td.coloreGiorno5 {
+    background-color: LightCyan;
+}
+td.coloreGiorno6 {
+    background-color: SkyBlue;
+    color: White;
+    font-weight: bold;
+}
+td.coloreGiorno0 {
+    background-color: RoyalBlue;
+    color: White;
+    font-weight: bold;
+}
+
+#tdCalendario {
+    padding: 0px 0px 0px 5px;
+    margin: 0px;
+    vertical-align: middle;
+}  
+
+#tdCalendarioBorder {
+    padding: 0px 0px 0px 5px;
+    margin: 0px;
+    vertical-align: middle;
+    border-top: 2px solid gray;
+}  
+
+th.coloreGiorno6 {
+    background-color: SkyBlue;
+    color: White;
+    font-weight: bold;
+}
+
+
+tbody {
+    padding: 0px;
+    font-size: small;
+}

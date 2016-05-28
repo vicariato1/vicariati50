@@ -1,0 +1,59 @@
+<?php $__env->startSection('contentHeader'); ?>
+<?php echo $__env->make('layoutHeader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo HTML::ul($errors->all(), array('class'=>'errors')); ?>
+
+<?php echo Form::open(['url'=> 'invioMessaggioContattaMain', 'class' => 'form-horizontal', 'id' => 'myForm']); ?>
+
+
+<div class="col-md-12">
+
+    <b><p>Con questo modulo contatterai l'amministratore del sito</p></b>
+    <b><p>Per contattare i responsabili dei vari ambiti accedi alle rispettive pagine</p></b>
+
+
+    <div class="form-group">
+        <?php echo Form::label('title', 'Scrivi la tua e-mail:', ['class'=>'col-sm-2 control-label']); ?>
+
+        <div class="col-md-10">
+            <?php echo Form::text('subject', null, ['class'=>'form-control']); ?>
+
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="form-group">
+        <?php echo Form::label('title', 'Testo:', ['class'=>'col-sm-2 control-label']); ?>
+
+        <div class="col-md-10">
+            <?php echo Form::textarea('message', null, ['class'=>'form-control']); ?>
+
+        </div>
+    </div>
+
+    <!--
+    <div class="form-group">
+        <?php echo Form::label('title', 'Codice CAPTCHA:', ['class'=>'col-sm-2 control-label']); ?>
+
+        <div class="col-md-10">
+             <?php echo app('captcha')->display();; ?> 
+        </div>
+    </div>
+    -->
+
+    <br />
+    <?php echo Form::submit(); ?>
+
+    <?php echo Form::close(); ?>
+
+</div>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,57 @@
+<?php $__env->startSection('contentHeader'); ?>
+<?php echo $__env->make('layoutHeader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="col-md-12">
+
+    <a href="<?php echo URL::to('visualizzaMascheraInserimentoUtenteAmbito'); ?>">Inserisci Associazione Utente/Ambito</a>
+
+    <?php if($ambitiUtenti->isEmpty()): ?>
+    <p> Nessuna Associazione Persona/Ambito presente!</p>
+    <?php else: ?>
+    <table class="table table-striped  table-condensed">
+        <thead>
+            <tr>
+                <th class="col-md-4 text-center"><small>User</small></th> 
+                <th class="col-md-4 text-center"><small>Ambito</small></th> 
+                <th class="col-md-2 text-center"><small>Parrocchia</small></th> 
+                <th class="col-md-1 text-center"><small>Primo Piano</small></th> 
+                <th class="col-md-1 text-center"><small></small></th> 
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($ambitiUtenti as $ambito): ?>
+            <tr>
+                <td>
+                    <a href="<?php echo URL::to('visualizzaMascheraModificaUtenteAmbito', $ambito->id); ?>"><?php echo $ambito->nome_user; ?></a>
+                </td>
+                <td>
+                    <a href="<?php echo URL::to('visualizzaMascheraModificaUtenteAmbito', $ambito->id); ?>"><?php echo $ambito->nome; ?></a>
+                </td>
+                <td class="text-left"><?php echo $ambito->nome_parrocchia; ?></td>
+                <?php if($ambito->gestisci_primo_piano): ?>
+                <td class="text-center">✔</td>
+                <?php else: ?>
+                <td></td>
+                <?php endif; ?>
+                <td><a href="<?php echo URL::to('deleteUtenteAmbito', $ambito->id); ?>"><?php echo HTML::image("/img/trash.gif"); ?></a></td>
+
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div id="divPaginazione" class="text-center">
+        <?php echo str_replace('/?', '?', $ambitiUtenti->render()); ?>
+
+    </div>
+    <?php endif; ?>
+
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

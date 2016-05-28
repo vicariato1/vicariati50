@@ -1,0 +1,6 @@
+[2016-05-16 00:27:39] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider' not found' in C:\xampp\htdocs\vicariati50\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:150
+Stack trace:
+#0 {main}  
+[2016-05-16 00:28:09] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider' not found' in C:\xampp\htdocs\vicariati50\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:150
+Stack trace:
+#0 {main}  

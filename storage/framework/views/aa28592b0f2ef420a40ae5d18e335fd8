@@ -1,0 +1,45 @@
+<?php $__env->startSection('contentHeader'); ?>
+<?php echo $__env->make('layoutHeader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<table class="col-md-12" style="margin-top: -37px">
+    <thead>
+        <tr>
+            <?php if(Session::get('tipoVicariatoUP') == 'V'): ?>
+            <th class="col-md-2 text-center label label-primary"><small>Parrocchie</small></th> 
+            <th class="col-md-3 text-center label label-primary"><small>Gruppi Vicariali</small></th> 
+            <th class="col-md-2 text-center label label-primary"><small>Bollettini</small></th> 
+            <th class="col-md-3 text-center label label-primary"><small>Prossimamente</small></th> 
+            <th class="col-md-2 text-center label label-primary"><small> </small></th> 
+            <?php else: ?>
+            <th class="col-md-4 text-center label label-primary"><small>Gruppi</small></th> 
+            <th class="col-md-3 text-center label label-primary"><small>Bollettini</small></th> 
+            <th class="col-md-3 text-center label label-primary"><small>Prossimamente<small></th> 
+            <th class="col-md-2 text-center label label-primary"><small> </small></th> 
+            <?php endif; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <?php if(Session::get('tipoVicariatoUP') == 'V'): ?>
+            <td id="tdSezioni"><?php echo $__env->make('home.incListaParrocchie', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incListaAmbiti', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incBollettini', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incRotatore', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incSlideParrocchie', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <?php else: ?>
+            <td id="tdSezioni"><?php echo $__env->make('home.incListaAmbiti', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incBollettini', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incRotatore', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <td id="tdSezioni"><?php echo $__env->make('home.incSlideParrocchie', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+            <?php endif; ?>
+        </tr>
+    </tbody>
+</table>
+<?php echo $__env->make('home.incListaNewsPrimoPiano', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('home.incListaNews', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('home.bottom', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

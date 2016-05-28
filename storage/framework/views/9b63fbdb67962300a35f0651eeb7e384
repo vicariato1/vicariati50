@@ -1,0 +1,107 @@
+<?php $__env->startSection('contentHeader'); ?>
+<?php echo $__env->make('layoutHeader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+<div class="col-md-12 label label-primary" style="margin-top:-37px;">
+    <h3><?php echo Form::label(null, $ambito->nome); ?></h3>
+</div>
+
+<?php if(Session::has('flash_message')): ?>
+    <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><h4> <?php echo session('flash_message'); ?></h4></div>
+<?php endif; ?>
+
+<?php if(!$contenitori->isEmpty()): ?>
+<div class="col-md-12" style="margin-top: 10px;margin-bottom: 20px;">
+    <?php echo Form::label('aaaa', 'Visualizza Contenitori'); ?>
+
+    <?php foreach($contenitori as $contenitore): ?>
+    <h4><a href="<?php echo URL::to('visualizzaContenitoreAmbito', $contenitore->id); ?>"><?php echo $contenitore->nome. str_repeat('&nbsp;', 2); ?></a></h4>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<div class="col-md-12" style="margin-top: 5px">
+    <h4><?php echo Form::label(null, $rigaResponsabili); ?><h4>
+            <a href="<?php echo e(URL::to('contattaAmbito')); ?>" class="btn btn-success">Contatta</a>
+            </div>
+
+
+            <div class="col-md-12" style="margin-top:-20px;">
+                <h3><?php echo HTML::link($ambito->link_diretto_1, $ambito->label_link_diretto_1); ?></h3>
+            </div>
+
+            <div class="col-md-12" style="margin-top: 20px;">
+                <?php echo Form::label(null, 'Presentazione gruppo'); ?>
+
+            </div>
+            <?php if((Session::get('utenteAutenticato') and ($ambito->utenteAppartenenteAmbito or Session::get('user')->admin == 1))): ?>
+            <div class="col-md-12" style="margin-top: -10px;">
+                <?php echo Form::open(['url'=> 'saveCorpoAmbito', 'class' => 'form-horizontal']); ?>
+
+                <?php echo Form::textarea('body', $ambito->body, array('id'=>'body','class'=>'jqte-body')); ?>
+
+                <?php echo Form::submit('Salva', ['class' => 'btn btn-primary']); ?>
+
+            </div>
+            <?php else: ?>
+            <div class="col-md-12" style="margin-top: -10px;">
+                <?php echo Form::textarea('body', $ambito->body, array('id'=>'body','class'=>'jqte-body-lettura','class'=>'jqte-body-lettura','readonly'=>'true')); ?>
+
+            </div>
+            <?php endif; ?>
+
+
+            <?php echo $__env->make('home.incListaNewsPrimoPiano', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php echo $__env->make('home.incListaNews', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+            <script>
+                $('.jqte-body').jqte({
+                    sub: false,
+                    sup: false,
+                    strike: false,
+                    remove: false,
+                    source: false
+                });
+                $('.jqte-body-lettura').jqte({
+                    b: false,
+                    i: false,
+                    indent: false,
+                    link: false,
+                    left: false,
+                    ol: false,
+                    fsize: false,
+                    format: false,
+                    color: false,
+                    sub: false,
+                    outdent: false,
+                    center: false,
+                    remove: false,
+                    right: false,
+                    rule: false,
+                    u: false,
+                    ul: false,
+                    unlink: false,
+                    sup: false,
+                    strike: false,
+                    source: false
+                });
+
+                $('.jqte-body-lettura').parents(".jqte").find(".jqte_toolbar").hide();
+                $('.jqte-body-lettura').parents(".jqte").css('max-height', '200px');
+                $('.jqte-body-lettura').parents(".jqte").css('overflow-y', 'auto');
+
+            </script>
+
+            <style>
+                h4 {
+                    display: inline;
+                }
+            </style>
+
+            <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

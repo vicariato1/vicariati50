@@ -1,0 +1,76 @@
+<?php $__env->startSection('contentHeader'); ?>
+<?php echo $__env->make('layoutHeader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo HTML::ul($errors->all(), array('class'=>'errors')); ?>
+
+<div class="container">
+    <div class="row">
+        <?php echo Form::open(['url'=> 'saveCreateAmbito', 'class' => 'form-horizontal', 'id' => 'myForm']); ?>
+
+
+        <div class="form-group">
+            <?php echo Form::label(null, 'Nome:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::text('nome', Input::old('nome'), ['class'=>'form-control']); ?>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('aaaa', 'Parrocchia:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::select('id_parrocchia', array('default' => 'Seleziona...')+Session::get('parrocchieCombo'), null, array('id'=>'selezioneParrocchia') ); ?>  
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:-10px;">
+            <?php echo Form::label('aaaa', 'Pubblica Prima Pagina:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::checkbox('pubblica_prima_pagina', true, true); ?> 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label(null, ' (Opzionale) Link:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="form-inline col-md-10">
+                <?php echo Form::text('link_diretto_1', Input::old('link_diretto_1'), ['class'=>'col-md-5']); ?>
+
+                <?php echo Form::label(null, ' Testo:', ['class'=>'col-md-1 control-label']); ?>
+
+                <?php echo Form::text('label_link_diretto_1', Input::old('label_link_diretto_1'), ['class'=>'col-md-6']); ?>
+
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top:-10px;">
+            <?php echo Form::label('', '', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::submit('Salva', ['class'=>'btn btn-primary']); ?>
+
+            </div>
+        </div>
+
+        <?php echo Form::close(); ?>
+
+
+    </div>
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+
+
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

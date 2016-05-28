@@ -1,0 +1,108 @@
+<header>
+    <div id="divLogo" class="container-fluid" style="background-image:url('<?php echo e(asset('img/sfondoVicariatiArcella.png')); ?>')">
+        <div style="float: left; width: 10%; margin-bottom: -10px" >
+            <?php if(Session::get('tipoVicariatoUP') == 'V' or Session::get('tipoVicariatoUP') == 'P'): ?>
+            <?php echo HTML::image("img/vicariato.gif"); ?>
+
+            <?php elseif(Session::get('tipoVicariatoUP') == 'UP1'): ?>
+            <?php echo HTML::image("img/up1.gif"); ?>
+
+            <?php elseif(Session::get('tipoVicariatoUP') == 'UP2'): ?>
+            <?php echo HTML::image("img/up2.gif"); ?>
+
+            <?php elseif(Session::get('tipoVicariatoUP') == 'UP3'): ?>
+            <?php echo HTML::image("img/up3.gif"); ?>
+
+            <?php endif; ?>
+        </div> 
+        <div  style="float: left; width: 40%; margin-top: -8px; margin-bottom: -10px" id="divVicariato">
+            <hgroup>
+                <?php if(Session::get('tipoVicariatoUP') == 'V'  or Session::get('tipoVicariatoUP') == 'P'): ?>
+                <h1><b><font color="white"><?php echo Session::get('titolo_generale'); ?></font></b></h1>
+                <h4 style="float: right; margin-top: -0px;"><i><font color="white"><?php echo Session::get('sottotitolo'); ?></font></i></h4>
+                <?php endif; ?>
+                <?php if(Session::get('tipoVicariatoUP') == 'UP1'): ?>
+                <h1><b><font color="white">Unità Pastorale Arcella</font></b></h1>
+                <h4 style="float: right; margin-top: -0px;"><i><font color="white">Alla ricerca di perle preziose...</font></i></h4>
+                <?php endif; ?>
+            </hgroup>
+        </div> 
+        <div style="float: right; margin-top: 22px;">
+            <?php echo Form::open(['url'=> 'cerca', 'class' => 'form-horizontal', 'id' => 'myForm']); ?>
+
+            <?php echo Form::text('stringaRicerca', Session::get('stringaRicercaNews'), array('placeholder' => 'Cerca', 'style' => 'border-radius: 5px;')); ?>
+
+            <?php echo Form::image('/img/cerca.gif', 'btnSub', ['class' => 'btn']); ?>                    
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+    <nav class="navbar navbar-default" >
+        <div id='cssmenu'>
+            <ul>
+                <?php if(Session::get('tipoVicariatoUP') == 'V' or Session::get('tipoVicariatoUP') == 'P'): ?>
+                <li><a href="<?php echo URL::to('home'); ?>">Home</a></li>
+                <?php elseif(Session::get('tipoVicariatoUP') == 'UP1'): ?>
+                <li><a href="<?php echo URL::to('up1'); ?>">Home</a></li>
+                <li><a href="<?php echo URL::to('home'); ?>">Vicariato</a></li>
+                <?php elseif(Session::get('tipoVicariatoUP') == 'UP2'): ?>
+                <li><a href="<?php echo URL::to('up2'); ?>">Home</a></li>
+                <li><a href="<?php echo URL::to('home'); ?>">Vicariato</a></li>
+                <?php elseif(Session::get('tipoVicariatoUP') == 'UP3'): ?>
+                <li><a href="<?php echo URL::to('up3'); ?>">Home</a></li>
+                <li><a href="<?php echo URL::to('home'); ?>">Vicariato</a></li>
+                <?php endif; ?>
+
+                <li><a href="<?php echo URL::to('orari_lista'); ?>">Orari Messe</a></li>
+                <li><a href="<?php echo URL::to('calendarioGeneraleLista'); ?>">Calendario</a></li>
+
+                <?php if(Session::get('utenteAutenticato')): ?>
+                <li><a href="<?php echo URL::to('createNews'); ?>">Nuova News</a></li>
+                <?php endif; ?>
+
+                <?php if(Session::get('tipoVicariatoUP') == 'V' or Session::get('tipoVicariatoUP') == 'P'): ?>
+                <li><a href="<?php echo URL::to('contattaMain'); ?>">Contatti</a></li>
+                <?php else: ?>
+                <li><a href="<?php echo URL::to('contattaParrocchia'); ?>">Contatti</a></li>
+                <?php endif; ?>
+
+                <li><a href="<?php echo URL::to('listaLink', 1); ?>">Link</a></li>
+
+                <?php if(!Session::get('utenteAutenticato')): ?>
+                <li><a href="<?php echo URL::to('login'); ?>">Login</a></li>
+                <?php else: ?>
+                <li><a href="<?php echo URL::to('uscita'); ?>">Esci</a></li>
+                <?php endif; ?>
+                <!--<li><a href="<?php echo URL::to('daFare'); ?>">Da fare</a></li>-->
+            </ul>
+        </div>
+        <?php if(Session::get('utenteAutenticato')): ?>
+        <div class="utenteAutenticato">Utente Autenticato: <?php echo Session::get('user')->nome; ?></div>
+        <style> 
+            div.utenteAutenticato {
+                font-size:18px;
+                color: #000000 !important;
+                text-align: right;
+                font-weight: 900;
+                margin-right: 10px;
+                padding: 10px 0px 20px 0px;
+            }
+        </style>
+        <?php endif; ?>
+    </nav>
+    <?php if(Session::get('utenteAutenticato') and Session::get('user')->admin == 1): ?>
+    <nav class="navbar navbar-default" style="margin-top: -20px;">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="<?php echo URL::to('listaParrocchie'); ?>">Parrocchie</a></li>
+            <li><a href="<?php echo URL::to('listaAmbiti'); ?>">Gruppi</a></li>
+            <li><a href="<?php echo URL::to('listaUtenti'); ?>">Utenti</a></li>
+            <li><a href="<?php echo URL::to('listaContenitori'); ?>">Contenitori</a></li>
+            <li><a href="<?php echo URL::to('listaParrocchieUtenti'); ?>">Parrocchie/Utenti</a></li>
+            <li><a href="<?php echo URL::to('listaAmbitiUtenti'); ?>">Gruppi/Utenti</a></li>
+            <li><a href="<?php echo URL::to('listaContenitoriUtenti'); ?>">Contenitori/Utenti</a></li>
+            <li><a href="<?php echo URL::to('visualizzaDatiGenerali'); ?>">Dati Generali</a></li>
+            <li><a href="<?php echo URL::to('listaLinkGestione', 1); ?>">Link</a></li>
+        </ul>
+    </nav>
+    <?php endif; ?>
+</header>

@@ -1,0 +1,9 @@
+<div class="col-md-12" id="divParrocchie">
+    <table id="tabParrocchie">
+        <?php foreach($parrocchie as $parrocchia): ?>
+        <tr>
+            <td><a href="<?php echo action('ParrocchieController@mostraParrocchia', $parrocchia->id); ?>"><?php echo $parrocchia->nome; ?></a></td>
+        </tr>        
+        <?php endforeach; ?>
+    </table>
+</div>

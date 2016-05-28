@@ -1,0 +1,72 @@
+<?php $__env->startSection('contentHeader'); ?>
+<?php echo $__env->make('layoutHeader', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo HTML::ul($errors->all(), array('class'=>'errors')); ?>
+
+<div class="container">
+    <div class="row">
+        <?php echo Form::open(['url'=> 'saveCreateUsers', 'class' => 'form-horizontal', 'id' => 'myForm']); ?>
+
+
+        <div class="form-group">
+            <?php echo Form::label(null, 'Nome:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::text('nome', Input::old('nome'), ['class'=>'form-control']); ?>
+
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:-10px;">
+            <?php echo Form::label(null, 'E-Mail:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::text('email', Input::old('email'), ['class'=>'form-control']); ?>
+
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:-10px;">
+            <?php echo Form::label('aaaa', 'Utente Amministratore:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::checkbox('admin', true, false); ?> 
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:-10px;">
+            <?php echo Form::label('aaaa', 'Utente Registrato:', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::checkbox('registrato', true, false); ?> 
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top:-10px;">
+            <?php echo Form::label('', '', ['class'=>'col-sm-2 control-label']); ?>
+
+            <div class="col-md-10">
+                <?php echo Form::submit('Salva', ['class'=>'btn btn-primary']); ?>
+
+            </div>
+        </div>
+
+        <?php echo Form::close(); ?>
+
+
+    </div>
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+
+
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,70 @@
+
+#tdSezioni{
+    border: 1px solid silver;
+    border-radius: 3px;
+}
+
+#divAmbiti {
+    overflow-y: auto; 
+    height:240px;
+    padding: 2px 5px 5px 10px;
+}
+
+#tabAmbiti {
+    line-height:130%;
+}
+
+#divParrocchie {
+    padding: 22px 5px 5px 10px;
+}
+
+#tabParrocchie {
+    margin-top:-20px;
+    line-height:130%;
+}
+
+#tdlista {
+    padding:1px 0px 0px 5px; 
+}  
+
+#tdBollettini {
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+}  
+
+
+
+
+
+
+
+
+
+/*#divVicariato {
+    font-family: airstreamregular;
+}
+#divCondividere {
+    font-family: jrhandregular;
+}
+
+@font-face {
+    font-family: 'airstreamregular';
+    src: url('fonts/Airstream-webfont.eot');
+    src: url('fonts/Airstream-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Airstream-webfont.woff') format('woff'),
+        url('fonts/Airstream-webfont.ttf') format('truetype'),
+        url('fonts/Airstream-webfont.svg#airstreamregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'jrhandregular';
+    src: url('fonts/jr!ha___-webfont.eot');
+    src: url('fonts/jr!ha___-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/jr!ha___-webfont.woff') format('woff'),
+        url('fonts/jr!ha___-webfont.ttf') format('truetype'),
+        url('fonts/jr!ha___-webfont.svg#jrhandregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}*/
